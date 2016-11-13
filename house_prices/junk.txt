@@ -1,0 +1,56 @@
+
+	# print pd.isnull(data).any()
+
+	#categorical = list(data.select_dtypes(include=['object']).columns)
+	#dummies = [] # convert categorical variable to indicator variable
+	#for col in categorical:
+	#	dummies.append(pd.get_dummies(data[col]))
+	#data = pd.concat((data, pd.concat(dummies, axis=1)), axis=1)
+	#data = data.drop(categorical, axis=1)
+
+# print clf.score(trainX, trainY)
+
+
+
+# print list(set(train.columns.values) - set(test.columns.values))
+
+# print clf.predict(test.values)
+
+#trainX = train.values
+
+#trainX_1, trainX_2, trainY_1, trainY_2 = train_test_split(trainX, trainY, test_size=0.1, random_state=42)
+
+trainY = train['SalePrice'] #.values
+
+
+
+# classify
+
+"""
+
+clf = ensemble.RandomForestClassifier(n_estimators=10)
+clf.fit(trainX_1, trainY_1)
+
+print clf.score(trainX_2, trainY_2)
+
+"""
+# print np.column_stack((trainX.columns.values, clf.feature_importances_))
+
+# test the stuff
+
+# DON"T DROP ID!!!
+
+"""
+
+test = retrieveAndCleanData('test.csv')
+
+testX = test.drop(['Id'], axis=1).values
+output = np.column_stack((test['Id'].values, clf.predict(testX)))
+results = pd.DataFrame(output.astype('int'), columns=['Id','SalePrice'])
+
+print results
+
+# results.to_csv('results2.csv', index=False)
+
+
+"""
